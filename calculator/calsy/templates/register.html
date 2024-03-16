@@ -1,0 +1,203 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+</head>
+<style>
+    .left,.right{ 
+        max-width: 500px;
+        min-width: 250px;
+        width: 500px;
+        margin-top: 2.5%;
+        display: flex;
+    }  
+    .right{
+        border-radius: 10px;
+        max-height: 550px;
+        min-height: 548px;
+        text-align: center;
+        display: block;
+        /* background-image: linear-gradient(#e6f1ff,rgb(255, 255, 255),rgb(255, 255, 255),#e6f1ff); */
+        background-color: #e9f9fc;
+        color: #006ace;
+        /* visibility: hidden; */
+    }
+    .reg{
+        margin-top: 50px;
+    }
+    .input{
+        margin: 50px 0px;
+        text-align: left;
+        margin-left: 20px;
+    }
+    .input input{
+        font-size: large;
+        width: 80%;
+        height:  36px;
+        margin-left: 20px;
+        margin-top: 10px;
+        padding: 3px;
+        border: solid #51b6f0 1px ;
+        border-radius: 50px;
+        background-color: #ffffff;
+        outline: none;
+        padding-left:  30px;
+    }
+    #submit{
+        background-color: #157bcff7;
+        color: #ffffff;
+        width: 100px;
+        transition: 0.8s;
+        font-size:medium;
+        padding: 7px 5px;
+        font-weight: bold;
+    }
+    #submit:hover{
+        background-color: #f8f8f8;
+        color: #4c4141;
+        border: solid #4c4141 1px;
+        padding: 5px;
+        /* transform: scale(1.1); */
+        transition: 0.5s;
+    }
+    #lsubmit{
+        background-color: #1569d6e1;
+        border: solid #581d1d 1px;
+        cursor: pointer;
+        transition: 0.8s;
+        color: #ffffff;
+    }
+    #lsubmit:hover{
+        background-color: #1d4758;
+        color: #ffffff;
+        transition: 0.8s;
+        border: solid  #4c4141 1px;
+        transform: scale(1.05);
+    }
+    .left{
+        border-radius: 0px 100px;
+        display: block;
+        height: 90%;
+        font-size: larger;
+        /* justify-content: center; */
+        
+    }
+    .middle{
+        /* padding: 80px 0px; */
+        text-align: center;
+    }
+    .middle div{
+        padding: 5px 0px;
+    }
+    .main{
+        display: flex;
+        width: auto;
+        height: 630px;
+        padding-bottom: 30px;
+        background-color: #e7f8fc;
+        justify-content: space-around;
+    }
+    body{
+        padding: 0%;
+        margin: 0%;
+        color: #fd760f;
+        font-weight: 900;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    a{
+        text-decoration: none;
+        color:#ffeee1;
+    }
+    
+    @media screen and (max-width: 600px) {
+        .main{
+            display: block;
+            height: auto;
+            padding-bottom: 50px;
+        }
+        body{
+            font-size: 16px;
+        }
+        .left, .right {
+            width: 90%;
+            margin: 0 auto;
+            padding: 10px auto;
+            border-radius: 0%;
+        }
+        .right{
+            padding: 5px 0;
+            border-radius: 20px;
+        }
+        .input input{
+            height:  26px;
+        }   
+    
+    }
+        @media screen and (max-width:1140px){
+            .main{
+                display: block;
+                height: auto;
+                padding-bottom: 50px;
+            }
+            .left, .right {
+            width: 90%;
+            margin: 0 auto;
+            padding: 10px auto;
+            border-radius: 0%;
+        }
+        .right{
+            padding: 5px 0;
+            border-radius: 20px;
+        }
+        }
+</style>
+<body>
+    <div class="main">
+        <div class="left">
+            <div class="middle">
+                <!-- <div style=" width: 100%; background-color: aliceblue; text-align: justify;">
+                    <div >
+               </div> 
+                <img src="{%static 'access-control-system-abstract-concept_335657-3180.avif'%}" alt="logo" width="100px" height="70px">
+                </div>                      
+                
+                <div><h2>Join Us</h2><h4>Register Now</h4></div>
+                <div><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur, qui.</p>
+                
+                <P>Lorem ipsum dolor sit amet.</P>
+                </div><br> -->
+                <img src="/media/Collab-bro.png" alt="logo" width="500" height="500" style="border-radius: 50px; max-width: 100%; height: auto;">
+                <div><a href="{%url 'login'%}"><button id="lsubmit" style="border-radius: 50px; width: 110px;" ><h3>Sign in</h3></button></a></div>
+            </div>
+        </div>
+
+        <div class="right" >
+                <div class="reg">
+                    <h2>
+                        Create your account
+                    </h2>
+                </div>
+                <div class="input">
+                    <form action="{%url 'register'%}" method="post">
+                        {% csrf_token %} 
+                        <label for="name" style="text-align: left;">Name :</label><br>
+                        <input type="text" id="name" name="name" required><br>
+                        <br><br>
+                        
+                        <label for="email">Email :</label><br>
+                        <input type="email" id="email" name="email" required ><br><br><br>
+
+                        <label for="password">Password :</label><br>
+                        <input type="password" id="password" name="password" required><br><br><br>
+
+                       <input type="submit" id="submit"  value="Sign UP" style="cursor: pointer;" > 
+                    </form>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

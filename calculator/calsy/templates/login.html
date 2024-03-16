@@ -1,0 +1,210 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In Page</title>
+</head>
+<style>
+    .left,.right{ 
+        max-width: 500px;
+        min-width: 250px;
+        width: 500px;
+        margin-top: 2.5%;
+        display: flex;
+    }
+    .right{
+        /* background-image: linear-gradient(#e2e2e267,rgb(255, 255, 255),rgb(255, 255, 255),#ffffff); */
+        border-radius: 10px;
+        max-height: 550px;
+        min-height: 548px;
+        text-align: center;
+        display: block;
+        
+        color: #1f411b;
+        /* visibility: hidden; */
+    }
+    .reg{
+        margin-top: 80px;
+    }
+    .input{
+        margin: 70px 0px;
+        text-align: left;
+        margin-left: 20px;
+    }
+    .input input{
+        font-size: large;
+        width: 80%;
+        height:  36px;
+        margin-left: 20px;
+        margin-top: 10px;
+        padding: 3px;
+        border: solid #03ff3acb 1px;
+        border-radius: 50px;
+        background-color: #ffffff;
+        /* background: linear-gradient(to right,  #9c9e9f 0%,#f6f6f6 100%); */
+        outline:#293956;
+        padding-left:  30px;
+    }
+    #submit{
+        background-color: #5cd498;
+        color: #070707;
+        width: 100px;
+        border: solid #411b1b 1px;
+        transition: 0.8s;
+        cursor: pointer;
+        font-weight: bold;
+        font-size:medium;
+        padding: 3px 5px;
+    }
+    #submit:hover{
+        background-color: #ffffff;
+        color: #1f411b;
+        border: solid #1f411b 1px;
+        padding: 5px;
+        /* transform: scale(1.1); */
+        transition: 0.5s;
+    }
+    #lsubmit{
+        background-color: rgba(81, 255, 110, 0.432);
+        color: #191d1d;
+        border: solid #1f411b  1px;
+        cursor: pointer;
+        transition: 0.8s;
+    }
+    #lsubmit:hover{
+        background-color: #00382c;
+        color: #dadada;
+        transition: 0.8s;
+        border: solid  #1f411b  1px;
+        transform: scale(1.05);
+    }
+    .left{
+        border-radius: 0px 100px;
+        display: block;
+        height: 90%;
+        font-size: larger;
+        margin-top: 0%;
+        /* justify-content: center; */
+    }
+    .middle{
+        /* padding: 80px 0px; */
+        text-align: center;
+    }
+    .middle div{
+        padding: 5px 0px;
+    }
+    .main{
+        display: flex;
+        width: auto;
+        height: auto;
+        background-color: #ffffff;
+        justify-content: space-around;
+    }
+    body{
+        padding: 0%;
+        margin: 0%;
+        font-weight: 900;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    a{
+        text-decoration: none;
+        color:#ffeee1;
+    }
+    @media screen and (max-width: 600px) {
+        .main{
+            display: block;
+            height: auto;
+            padding-bottom: 50px;
+        }
+        body{
+            font-size: 16px;
+        }
+        .left, .right {
+            width: 90%;
+            margin: 0 auto;
+            padding: 10px auto;
+            border-radius: 0%;
+        }
+        .right{
+            padding: 5px 0;
+            border-radius: 20px;
+        }     
+        .input input{
+            height:  26px;
+        }
+    }
+    @media screen and (max-width:1140px){
+        .main{
+            display: block;
+            height: auto;
+            padding-bottom: 50px;
+        }
+        .left, .right {
+            width: 90%;
+            margin: 0 auto;
+            padding: 10px auto;
+            border-radius: 0%;
+        }
+    .right{
+        padding: 5px 0;
+        border-radius: 20px;
+        }
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="left">
+            <div class="middle">
+                <!-- <div >
+                    <img src="images/logo-1933884_640.webp" alt="logo" width="100px" height="70px">
+                </div>                      
+                <div>
+                    <h2>Welcome Back</h2>
+                    <h4>Please Log In</h4>
+                </div>
+                <div>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur, qui.</p>
+                    <P style="color: #293956;">If you dont have account </P>
+                    <p style="color: #293956;" >Plz register <span style="color: #ffffff;">&#8595;</span></p>
+                </div> -->
+                <img src="/media/Mobile login-bro.png" alt="logo" width="500" height="500" style=" max-width: 100%; height: auto;">
+                <div>
+                    <a href="{% url 'register'%}">
+                        <button id="lsubmit" style="border-radius: 50px; width: 100px;">
+                            <h3>
+                                Sign Up
+                            </h3>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="right" >
+            <div class="reg">
+                <h2>
+                    Welcome to SiteName
+                </h2>
+                <h4>{{user_name}}</h4>
+            </div>
+            <div class="input">
+                <form action="{%url 'login'%}" method="post">
+                    {% csrf_token %} 
+                    <label for="email" style="text-align: left;">Email :</label><br>
+                    <input type="email" id="email" name="email" required><br>
+                    <br><br>
+
+                    <label for="password">Password :</label>
+                    <input type="password" id="password" name="password" required><br><br><br>
+
+                    <input type="submit" id="submit"  value="Log In" style="cursor: pointer;" > 
+                
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
